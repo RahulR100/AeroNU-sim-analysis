@@ -1,10 +1,12 @@
 %import data from combined results file
 
-rootdata  = xlsread("Combined results.xlsx", "B3:CS25");
-spandata  = xlsread("Combined results.xlsx", "B29:DI51");
-sweepdata = xlsread("Combined results.xlsx", "B55:DI77");
-tipdata   = xlsread("Combined results.xlsx", "B81:DY103");
-widthdata = xlsread("Combined results.xlsx", "B107:BM129");
+input_file = "input_data/Combined results.xlsx";
+
+rootdata  = xlsread(input_file, "B3:CS25");
+spandata  = xlsread(input_file, "B29:DI51");
+sweepdata = xlsread(input_file, "B55:DI77");
+tipdata   = xlsread(input_file, "B81:DY103");
+widthdata = xlsread(input_file, "B107:BM129");
 
 %now analyse the data
 
