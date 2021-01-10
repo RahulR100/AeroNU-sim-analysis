@@ -3,8 +3,7 @@
 function sortedData = divandconq(tableData, numVars)
 
     numVars = numVars - 1;
-    sortedData = [];
-    sortedData = [sortedData, struct("head", tableData{1:numVars, 2}, "data", [tableData((numVars + 1):height(tableData), 2)])];
+    sortedData = [[], struct("head", tableData{1:numVars, 2}, "data", [tableData((numVars + 1):height(tableData), 2)])];
     
     for i = 3:width(tableData)
         
