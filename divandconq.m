@@ -1,4 +1,4 @@
-%given a table of data sort the data based on aoa and mach val (example)
+%given a table of data sort the data based on a set of other variables
 
 function sortedData = divandconq(tableData, numVars)
 

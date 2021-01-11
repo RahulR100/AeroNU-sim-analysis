@@ -1,20 +1,19 @@
-%some constantsis
+%STEP 1: very imporant global constant
 numVars = 3;
 
-%import data from combined results file
+%STEP 2: import data from input_data folder
 
 combinedData = importdat();
 
-%now analyse the data
-
-%find all instances for each mach val and aoa
-%then sort that data (now an array of arrays)
+%STEP 3: now analyse the data using divide and conquer
 
 for i = 1:length(combinedData)
     individualData = struct2cell(combinedData{1, i});
     combinedData{1, i} = struct("name", individualData{1, 1}, "data", divandconq(individualData{2, 1}, numVars));
 end
 
-%then graph all results for all values (now an array of graphs)
+%STEP 4: create basic output folder structure, prepare to graph
 
-%and now save it
+%STEP 5: graph all results for all values (now an array of graphs)
+
+%STEP 6: now save everything to output_data

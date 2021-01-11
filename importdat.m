@@ -1,5 +1,5 @@
 %look in input_data folder
-%import data from every file into its own table and give it a tag with the
+%import data from every excel file into its own table and give it a tag with the
 %name of the file
 
 function impData = importdat()
