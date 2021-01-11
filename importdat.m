@@ -10,7 +10,7 @@ function impData = importdat()
 
     for i = 1:numEntries
         fileName = srcFiles(i).name;
-        impData{i} = struct(regexprep(fileName(1:end-5), ' ', '_'), readtable(append("input_data/", fileName), "Sheet", "Parametric Study"));
+        impData{i} = struct("name", regexprep(fileName(1:end-5), ' ', '_'), "data", readtable(append("input_data/", fileName), "Sheet", "Parametric Study"));
     end
 
 end
