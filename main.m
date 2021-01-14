@@ -23,7 +23,7 @@ for i = 1:length(combinedData)
     %mkdir(append(root, currDate, combinedData{1, i}.name));
     dat = combinedData{1, i}.data;
     for j = 1:length(dat)
-        mkdir(append(root, "/", currDate, "/", combinedData{1, i}.name, "/", num2str(reshape(dat(j).head', 1, []))));
+        mkdir(append(root, "/", currDate, "/", combinedData{1, i}.name, "/", namefolder(combinedData{1, i}.keys, reshape(dat(j).head', 1, []))));
     end
 end
 
