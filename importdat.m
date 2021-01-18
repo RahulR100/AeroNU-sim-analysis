@@ -4,13 +4,13 @@
 
 function impData = importdat()
 
-    srcFiles = dir("input_data/*.xlsx");
+    srcFiles = dir("input_data/*.xlsx"); %read only .xlsx files
     numEntries = length(srcFiles);
     impData = cell(1, numEntries);
 
     for i = 1:numEntries
         fileName = srcFiles(i).name;
         impData{i} = struct("name", regexprep(fileName(1:end-5), ' ', '_'), "data", readtable(append("input_data/", fileName), "Sheet", "Parametric Study"));
-    end
+    end %end for
 
-end
+end %end function
