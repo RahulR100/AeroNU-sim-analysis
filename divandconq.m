@@ -3,7 +3,7 @@
 function sortedData = divandconq(tableData, numVars)
 
     numVars = numVars - 1;
-    sortedData = [[], struct("head", tableData{1:numVars, 2}, "data", [tableData((numVars + 1):height(tableData), 2)])];
+    sortedData = [[], struct("head", tableData{1:numVars, 2}, "data", [tableData((numVars + 1):height(tableData), 1), tableData((numVars + 1):height(tableData), 2)])];
     
     for i = 3:width(tableData)
         
@@ -19,7 +19,7 @@ function sortedData = divandconq(tableData, numVars)
         end
         
         if similar == false
-            sortedData = [sortedData, struct("head", tableData{1:numVars, i}, "data", [tableData((numVars + 1):height(tableData), i)])]; 
+            sortedData = [sortedData, struct("head", tableData{1:numVars, i}, "data", [tableData((numVars + 1):height(tableData), 1), tableData((numVars + 1):height(tableData), i)])]; 
         end
         
     end
