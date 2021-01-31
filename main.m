@@ -28,6 +28,6 @@ for i = 1:length(combinedData)
     for j = 1:length(dat)
         folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/", namefolder(combinedData{1, i}.keys, reshape(dat(j).head', 1, [])));
         mkdir(folderName);
-        makegraph(dat(j), folderName);
+        makegraph(dat(j), folderName); %!! THIS IS THE FUNCTION YOU EDIT TO GET NEW GRAPHS
     end %end for (j)
 end %end for (i)
