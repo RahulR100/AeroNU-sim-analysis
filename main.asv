@@ -28,7 +28,7 @@ for i = 1:length(combinedData)
     for j = 1:length(dat)
         folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/", namefolder(combinedData{1, i}.keys, reshape(dat(j).head', 1, [])));
         mkdir(folderName);
-        finecalc(dat(j), folderName); %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
+        finecalc(dat(j), folderName); %!! THIS IS THE FUNCTION YOU EDIT TO GET NEW GRAPHS
     end %end for (j)
-    coarsecalc(fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
+    coarsecalc(fineCalcResul
 end %end for (i)

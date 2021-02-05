@@ -27,7 +27,7 @@
 % copy this template when you write your function
 
 %{
-function void = makegraph(combinedTable, location)
+function void = finecalc(combinedTable, location)
 
     %extract the data from the combinedTable
     data = combinedTable.data;
@@ -44,7 +44,7 @@ end %end function
 % this function graphs every variable in the combinedTable
 
 %{
-function void = makegraph(combinedTable, location)
+function void = finecalc(combinedTable, location)
 
     data = combinedTable.data;
     for i = 2:height(data) %start at 2 as 1 is variable names
@@ -59,7 +59,7 @@ end %end function
 
 %% DEFINE YOUR FUNCTION HERE:
 
-function void = makegraph(combinedTable, location)
+function void = finecalc(combinedTable, location)
 
     data = combinedTable.data;
     
