@@ -5,7 +5,7 @@ function sortedData = divandconq(tableData, numVars)
     numVars = numVars - 1; %very sneaky but necessary correction
     sortedData = [[], struct("head", tableData{1:numVars, 2}, "data", [tableData((numVars + 1):height(tableData), 1), tableData((numVars + 1):height(tableData), 2)])]; %head = set values, data = all the other measured values
     
-    for i = 3:width(tableData) %1 is variable names and 2 has already been dealth with in sortedData initialisation
+    for i = 3:width(tableData) %1 is variable names and 2 has already been dealt with in sortedData initialisation
         
         similar = false;
         for j = 1:length(sortedData)

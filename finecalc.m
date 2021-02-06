@@ -16,11 +16,14 @@
 % saved. You need to append the "/" to this to enter the folder in your
 % loop
 
-% OUTPUTS:
-% Your graph should not return anything. i.e. the value of void should be
-% unset.. therefore void
+% OUTPUTS: 
+% Your graph can return 1 thing. EXACTLY 1. This can be an array, a cell, a
+% string, a value, anything really. It can also be nothing. Set the return
+% type to void and do not declare it. The function will then return
+% nothing. All results returned from here can then be used in the coarse
+% calculation function.
 
-% Save your file to location. Usually this involves something like
+% You can save things to location. Usually this involves something like
 % exportgraphics(location, "/", ...);
 
 %% TEMPLATE
@@ -62,6 +65,11 @@ end %end function
 function void = finecalc(combinedTable, location)
 
     data = combinedTable.data;
+    y = data{11, (2:width(data))} ./ data{10, (2:width(data))};
+    x = data{1, (2:width(data))};
     
+    slope = polyfit(x, y, 1);
+    
+    void = slope(1);
 
 end %end function

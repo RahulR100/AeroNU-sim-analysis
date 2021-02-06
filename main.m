@@ -25,10 +25,16 @@ currDate = strrep(datestr(datetime), ':', '_'); %set here to ensure it is consta
 
 for i = 1:length(combinedData)
     dat = combinedData{1, i}.data;
+    keys = combinedData{1, i}.keys;
+    fineCalcResults = [];
+    
     for j = 1:length(dat)
-        folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/", namefolder(combinedData{1, i}.keys, reshape(dat(j).head', 1, [])));
+        folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/fine/", namefolder(keys, reshape(dat(j).head', 1, [])));
         mkdir(folderName);
-        finecalc(dat(j), folderName); %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
+        fineCalcResults = [fineCalcResults, finecalc(dat(j), folderName)]; %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
     end %end for (j)
-    coarsecalc(fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
+    
+    folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/coarse");
+    mkdir(folderName);
+    coarsecalc(keys, dat, fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
 end %end for (i)

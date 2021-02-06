@@ -1,0 +1,14 @@
+%This function operates like div and conq, except for data that has already
+%been divided and conquered. 
+
+function newResults = reducer(oldData)
+    
+    dat = oldData.data;
+    
+    sortedData = [];
+    
+    for i = 1:width(dat)
+        key = dat{}
+    end
+
+end
