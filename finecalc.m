@@ -49,6 +49,8 @@ end %end function
 %{
 function void = finecalc(combinedTable, location)
 
+    mkdir(location);
+
     data = combinedTable.data;
     for i = 2:height(data) %start at 2 as 1 is variable names
         f = gcf; %blank canvas

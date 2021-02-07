@@ -27,14 +27,14 @@ for i = 1:length(combinedData)
     dat = combinedData{1, i}.data;
     keys = combinedData{1, i}.keys;
     fineCalcResults = [];
+    finalRes = [];
     
     for j = 1:length(dat)
         folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/fine/", namefolder(keys, reshape(dat(j).head', 1, [])));
-        mkdir(folderName);
         fineCalcResults = [fineCalcResults, finecalc(dat(j), folderName)]; %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
     end %end for (j)
     
     folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/coarse");
-    mkdir(folderName);
-    coarsecalc(keys, dat, fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
+    res = coarsecalc(keys, dat, fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
+    finalRes = [finalRes, res];
 end %end for (i)

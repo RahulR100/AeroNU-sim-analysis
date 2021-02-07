@@ -46,6 +46,8 @@ end %end function
 %{
 function void = coarsecalc(fineResults, location)
 
+    mkdir(location);
+
     data = combinedTable.data;
     for i = 2:height(data) %start at 2 as 1 is variable names
         f = gcf; %blank canvas
@@ -62,7 +64,26 @@ end %end function
 function void = coarsecalc(keys, dat, fineResults, location)
 
     headers = {dat.head};
+    reducedData = reducer(headers, fineResults);
+    slopes = [];
     
-    reducer(headers, fineResults);
+    mkdir(location);
+    
+    for i = 1:length(reducedData)
+        temp = reducedData(i).data;
+        x = [temp.key];
+        y = [temp.value];
+        
+        slope = polyfit(x, y, 1);
+        slopes = [slopes, slope(1)];
+    end
+    
+    f = gcf;
+    disp(slopes);
+    plot([reducedData.head], slopes);
+    ylabel(keys(1));
+    exportgraphics(f, append(location, "/result.png"));
+    
+    void = reducedData;
 
 end %end function
