@@ -39,12 +39,7 @@
 % calculated data is placed into the structure of the old data. However, to
 % perform higher level calculations, this structure must be changed. A
 % reducer does this. It changes the structure of the data to allow higher
-% level calculations to be performed.
-
-% Note!: Once a reducer has been run, it cannot be undone.
-
-% Inputs: dat.head, fineResults
-% Output: table -> usable for higher level calculations
+% level calculations to be performed. 
 
 %% TEMPLATE
 % copy this template when you write your function

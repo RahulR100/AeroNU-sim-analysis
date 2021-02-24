@@ -30,14 +30,19 @@
 % copy this template when you write your function
 
 %{
-function void = finecalc(combinedTable, location)
+function ret = finecalc(combinedTable, location)
 
     %extract the data from the combinedTable
     data = combinedTable.data;
+
+    %make the destination folder if necessary
+    mkdir(location)
     
     %process the data here (usually a for loop of some kind) and save it to
     %the appropriate location.
     
+    %ret =? return anything you want to 
+
     %see example below for more detail
 
 end %end function
@@ -47,7 +52,7 @@ end %end function
 % this function graphs every variable in the combinedTable
 
 %{
-function void = finecalc(combinedTable, location)
+function ret = finecalc(combinedTable, location)
 
     mkdir(location);
 
@@ -64,14 +69,19 @@ end %end function
 
 %% DEFINE YOUR FUNCTION HERE:
 
-function void = finecalc(combinedTable, location)
+function ret = finecalc(combinedTable, location)
 
     data = combinedTable.data;
     y = data{11, (2:width(data))} ./ data{10, (2:width(data))};
     x = data{1, (2:width(data))};
     
+    mkdir(location);
+    
+    gph = makegraph(x, y, "AOA", "");
+    exportgraphics(gph, append(location, "/fine.png"));
+    
     slope = polyfit(x, y, 1);
     
-    void = slope(1);
+    ret = slope(1);
 
 end %end function
