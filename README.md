@@ -8,8 +8,8 @@ Analyse data after solidworks parateric sim analysis
 1. Take simulation results (`.xlsx` only) and dump them in `input_data`
 2. Open `main.m` and change `num_variables` to the number of variables analysed in the parametric study
 3. Edit `coarseCalc()` and `fineCalc()` as necessary. Read documentation for each below:
-    1. [coarseCalc documentation](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/coarseCalc.md)
-    2. [fineCalc documentation](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/fineCalc.md)
+    1. [`coarseCalc()` documentation](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/coarseCalc.md)
+    2. [`fineCalc()` documentation](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/fineCalc.md)
 4. Run `main.m` and look for data in `output_data` with the current timestamp
 
 ---
