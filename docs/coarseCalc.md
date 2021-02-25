@@ -27,6 +27,8 @@ In a state where: `Fin length --(many)> Angle of Attack --(many)> Mach Number`, 
 
 4. `location`: Location to a folder where you want to save anything, be it data or graphs. Note that saving data to this location will require appending a `/` to the end of `location`.
 
+Note that the directory is not automatically created for you. This is done on purpose to avoid creating thousands of empty directories when not required. Hence, simply use `mkdir(location)` to make the directory for you.
+
 ### Output:
 
 Your function can output up to 1 object. To output more than 1 object, consider the use of an array or struct as appropriate.  
