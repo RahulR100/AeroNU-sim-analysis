@@ -12,7 +12,9 @@ Analyse data after solidworks parateric sim analysis
     2. [`fineCalc()` documentation](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/fineCalc.md)
 4. Run `main.m` and look for data in `output_data` with the current timestamp
 
+For a general idea of how the program flows, see [here](https://github.com/RahulR100/AeroNU-sim-analysis/blob/main/docs/genFlow.md)
+
 ---
 ### Useful functions provided:
 1. `makegraph(x, y, x_label, y_label)` &#8594; graph
-2. `reducer(headers, data)` &#8594; higher order table
+2. `reducer(headers, lower_order_table)` &#8594; higher order table
