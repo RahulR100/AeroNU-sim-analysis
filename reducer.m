@@ -1,18 +1,18 @@
 %This function operates like div and conq, except for data that has already
 %been divided and conquered. 
 
-function newResults = reducer(oldData, computedData)
+function higher_order_table = reducer(headers, fine_results)
     
-    sortedData = [[], struct("head", oldData{1, 1}(1), "data", [struct("key", oldData{1, 1}(2), "value", computedData(1))])];
+    reduced_data = [[], struct("head", headers{1, 1}(1), "data", [struct("key", headers{1, 1}(2), "value", fine_results(1))])];
     count = 2;
     
-    for i = 2:length(oldData)
+    for i = 2:length(headers)
 
         similar = false;
-        for j = 1:length(sortedData)           
+        for j = 1:length(reduced_data)           
            
-           if isequal(sortedData(j).head, oldData{1, i}(1))
-               sortedData(j).data = [sortedData(j).data, struct("key", oldData{1, i}(2), "value", computedData(count))];
+           if isequal(reduced_data(j).head, headers{1, i}(1))
+               reduced_data(j).data = [reduced_data(j).data, struct("key", headers{1, i}(2), "value", fine_results(count))];
                count = count + 1;
                similar = true;
                break;
@@ -21,12 +21,12 @@ function newResults = reducer(oldData, computedData)
         end
         
         if similar == false
-           sortedData = [sortedData, struct("head", oldData{1, i}(1), "data", [struct("key", oldData{1, i}(2), "value", computedData(count))])];
+           reduced_data = [reduced_data, struct("head", headers{1, i}(1), "data", [struct("key", headers{1, i}(2), "value", fine_results(count))])];
            count = count + 1;
         end
         
     end
     
-    newResults = sortedData;
+    higher_order_table = reduced_data;
     
 end

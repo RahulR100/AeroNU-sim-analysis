@@ -7,7 +7,7 @@
 % INPUTS:
 % Every time it is called the function is given the following inputs:
 
-% 1) combinedTable --> The table of data for each value of independent
+% 1) original_data --> The table of data for each value of independent
 % variables. The variable list (height) is the same as the input excel
 % file. Always iterate over the height of the table. Do not worry about the
 % width the program will take care of that for you.
@@ -30,10 +30,10 @@
 % copy this template when you write your function
 
 %{
-function ret = finecalc(combinedTable, location)
+function ret = finecalc(original_data, location)
 
-    %extract the data from the combinedTable
-    data = combinedTable.data;
+    %extract the data from the original_data struct
+    data = original_data.data;
 
     %make the destination folder if necessary
     mkdir(location)
@@ -52,11 +52,11 @@ end %end function
 % this function graphs every variable in the combinedTable
 
 %{
-function ret = finecalc(combinedTable, location)
+function ret = finecalc(original_data, location)
 
     mkdir(location);
 
-    data = combinedTable.data;
+    data = original_data.data;
     for i = 2:height(data) %start at 2 as 1 is variable names
         f = gcf; %blank canvas
         plot(data{1, (2:width(data))}, data{i, (2:width(data))});
@@ -69,9 +69,9 @@ end %end function
 
 %% DEFINE YOUR FUNCTION HERE:
 
-function ret = finecalc(combinedTable, location)
+function ret = finecalc(original_data, location)
 
-    data = combinedTable.data;
+    data = original_data.data;
     y = data{11, (2:width(data))} ./ data{10, (2:width(data))};
     x = data{1, (2:width(data))};
     

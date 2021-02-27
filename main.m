@@ -1,18 +1,18 @@
 %STEP 1: very imporant global constant
 %SET equal to the number of variables we have
 
-numVars = 3;
+num_variables = 3;
 
 %STEP 2: import data from input_data folder
 
-combinedData = importdat();
+original_data = importdat();
 
 %STEP 3: now analyse the data using divide and conquer
 
-for i = 1:length(combinedData)
-    individualData = struct2cell(combinedData{1, i});
-    tableData = individualData{2, 1};
-    combinedData{1, i} = struct("name", individualData{1, 1}, "data", divandconq(individualData{2, 1}, numVars), "keys", {reshape(tableData{1:(numVars - 1), 1}, 1, [])});
+for i = 1:length(original_data)
+    individual_data = struct2cell(original_data{1, i});
+    table_data = individual_data{2, 1};
+    original_data{1, i} = struct("name", individual_data{1, 1}, "data", divandconq(individual_data{2, 1}, num_variables), "keys", {reshape(table_data{1:(num_variables - 1), 1}, 1, [])});
 end %end for
 
 %COMBINED STEPS:
@@ -21,20 +21,20 @@ end %end for
 %STEP 4C: save everything to appropriate folder in output_data
 
 root = "output_data"; %can change but dont recommend
-currDate = strrep(datestr(datetime), ':', '_'); %set here to ensure it is constant for all iterations
+current_date = strrep(datestr(datetime), ':', '_'); %set here to ensure it is constant for all iterations
 
-for i = 1:length(combinedData)
-    dat = combinedData{1, i}.data;
-    keys = combinedData{1, i}.keys;
-    fineCalcResults = [];
-    finalRes = [];
+for i = 1:length(original_data)
+    dat = original_data{1, i}.data;
+    keys = original_data{1, i}.keys;
+    fine_calc_results = [];
+    final_results = [];
     
     for j = 1:length(dat)
-        folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/fine/", namefolder(keys, reshape(dat(j).head', 1, [])));
-        fineCalcResults = [fineCalcResults, finecalc(dat(j), folderName)]; %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
+        folder_name = append(root, "/", current_date, "/", original_data{1, i}.name, "/fine/", namefolder(keys, reshape(dat(j).head', 1, [])));
+        fine_calc_results = [fine_calc_results, finecalc(dat(j), folder_name)]; %!! THIS IS THE FUNCTION YOU EDIT TO PERFORM CALCULATIONS AT THE FINEST LEVEL
     end %end for (j)
     
-    folderName = append(root, "/", currDate, "/", combinedData{1, i}.name, "/coarse");
-    res = coarsecalc(keys, dat, fineCalcResults, folderName); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
-    finalRes = [finalRes, res];
+    folder_name = append(root, "/", current_date, "/", original_data{1, i}.name, "/coarse");
+    coarse_result = coarsecalc(keys, dat, fine_calc_results, folder_name); %!! THIS FUNCTION USES THE FINE CALC RESULTS TO PERFORM CALCULATIONS AT A HIGHER LEVEL
+    final_results = [final_results, coarse_result];
 end %end for (i)

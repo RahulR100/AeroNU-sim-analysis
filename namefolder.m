@@ -1,10 +1,10 @@
 %given particular variable keys, generate a folder name
 
-function namefolder = namefolder(keys, data)
+function folder_name = namefolder(keys, data)
 
-    namefolder = "";
+    folder_name = "";
     for i = 1:length(keys) %simple loop to go through keys and return a useful folder name
-        namefolder = append(namefolder, " ", keys{i}, "-", num2str(data(i)));
+        folder_name = append(folder_name, " ", keys{i}, "-", num2str(data(i)));
     end %end for
     
 end %end function
