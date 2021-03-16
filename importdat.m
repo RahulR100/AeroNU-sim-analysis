@@ -11,6 +11,8 @@ function impData = importdat()
     for i = 1:numEntries
         fileName = srcFiles(i).name;
         if contains(fileName, "~") == false %now you can have the file open and run this at the same time yay!
+            %regexprep replaces blank spaces with underscores so that the
+            %names can be used for variables
             impData{i} = struct("name", regexprep(fileName(1:end-5), ' ', '_'), "data", readtable(append("input_data/", fileName), "Sheet", "Parametric Study"));
         end
     end %end for

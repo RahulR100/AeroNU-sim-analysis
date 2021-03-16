@@ -116,14 +116,14 @@ function ret = coarsecalc(keys, dat, fineResults, location)
         y = [temp.value];
         
         gph = makegraph(x, y, keys(2), "");
-        exportgraphics(gph, append(location, "/result", num2str(i), ".png"));
+        %exportgraphics(gph, append(location, "/result", num2str(i), ".png"));
         
         slope = polyfit(x, y, 1);
         slopes = [slopes, slope(1)];
     end
     
-    gph = makegraph([reducedData.head], slopes, keys(1), "");
-    exportgraphics(gph, append(location, "/final.png"));
+    %gph = makegraph([reducedData.head], slopes, keys(1), "");
+    %exportgraphics(gph, append(location, "/final.png"));
     
     ret = reducedData;
 

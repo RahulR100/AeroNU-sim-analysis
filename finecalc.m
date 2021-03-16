@@ -70,18 +70,22 @@ end %end function
 %% DEFINE YOUR FUNCTION HERE:
 
 function ret = finecalc(combinedTable, location)
-
+    
+    dataIndices = [14, 13]; %this option gives GG force Y / GG force X aka lift per drag
+    dataIndices = [11, 10]; %this option gives Normal force Y / Normal force X
+    
+    
     data = combinedTable.data;
-    y = data{11, (2:width(data))} ./ data{10, (2:width(data))};
+    y = data{dataIndices(1), (2:width(data))} ./ data{dataIndices(2), (2:width(data))};
     x = data{1, (2:width(data))};
     
     mkdir(location);
     
-    gph = makegraph(x, y, "AOA", "");
-    exportgraphics(gph, append(location, "/fine.png"));
+    gph = makegraph(x, y, "AOA", "Lift per Drag");
+    %exportgraphics(gph, append(location, "/fine.png"));
     
     slope = polyfit(x, y, 1);
     
-    ret = slope(1);
+    ret = slope(1); %returns the slope of lift per drag ratio with respect to angle of attach for a given mach number and root chord
 
 end %end function
